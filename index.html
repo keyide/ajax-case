@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>学员基本信息管理系统</title>
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: "Microsoft YaHei"
+    }
+
+    .navbar-inverse {
+      border-radius: 0
+    }
+
+    .table {
+      text-align: center;
+    }
+
+    .table-bordered > thead > tr:first-child > td {
+      border-bottom: none;
+      font-weight: bold
+    }
+
+    .pagination {
+      margin: 0
+    }
+
+    .loading {
+      width: 100%;
+      height: 100%;
+      border-radius: 5px;
+      background: url("data:image/gif;base64,R0lGODlhKwALAPEAAP///7u7u97e3ru7uyH5BAkKAAAAIf4aQ3JlYXRlZCB3aXRoIGFqYXhsb2FkLmluZm8AIf8LTkVUU0NBUEUyLjADAQAAACwAAAAAKwALAAACMoSOCMuW2diD88UKG95W88uF4DaGWFmhZid93pq+pwxnLUnXh8ou+sSz+T64oCAyTBUAACH5BAkKAAAALAAAAAArAAsAAAI9xI4IyyAPYWOxmoTHrHzzmGHe94xkmJifyqFKQ0pwLLgHa82xrekkDrIBZRQab1jyfY7KTtPimixiUsevAAAh+QQJCgAAACwAAAAAKwALAAACPYSOCMswD2FjqZpqW9xv4g8KE7d54XmMpNSgqLoOpgvC60xjNonnyc7p+VKamKw1zDCMR8rp8pksYlKorgAAIfkECQoAAAAsAAAAACsACwAAAkCEjgjLltnYmJS6Bxt+sfq5ZUyoNJ9HHlEqdCfFrqn7DrE2m7Wdj/2y45FkQ13t5itKdshFExC8YCLOEBX6AhQAADs=") center center no-repeat;
+      background-color: rgba(0, 0, 0, 0.3);
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: none;
+    }
+
+    .btn-loading,
+    .btn-loading:hover,
+    .btn-loading:focus,
+    .btn-loading:active {
+      background-image: url("data:image/gif;base64,R0lGODlhKwALAPEAAP///7u7u97e3ru7uyH5BAkKAAAAIf4aQ3JlYXRlZCB3aXRoIGFqYXhsb2FkLmluZm8AIf8LTkVUU0NBUEUyLjADAQAAACwAAAAAKwALAAACMoSOCMuW2diD88UKG95W88uF4DaGWFmhZid93pq+pwxnLUnXh8ou+sSz+T64oCAyTBUAACH5BAkKAAAALAAAAAArAAsAAAI9xI4IyyAPYWOxmoTHrHzzmGHe94xkmJifyqFKQ0pwLLgHa82xrekkDrIBZRQab1jyfY7KTtPimixiUsevAAAh+QQJCgAAACwAAAAAKwALAAACPYSOCMswD2FjqZpqW9xv4g8KE7d54XmMpNSgqLoOpgvC60xjNonnyc7p+VKamKw1zDCMR8rp8pksYlKorgAAIfkECQoAAAAsAAAAACsACwAAAkCEjgjLltnYmJS6Bxt+sfq5ZUyoNJ9HHlEqdCfFrqn7DrE2m7Wdj/2y45FkQ13t5itKdshFExC8YCLOEBX6AhQAADs=");
+      background-position: center;
+      background-repeat: no-repeat;
+      color: transparent;
+    }
+  </style>
+</head>
+<body>
+<!---------顶部导航---------->
+<nav class="navbar navbar-inverse">
+  <div class="container">
+    <div class="navbar-header">
+      <a href="#" class="navbar-brand">
+        <b>信息管理系统</b>
+      </a>
+    </div>
+    <div class="navbar-right">
+      <span class="navbar-text">Copyright © 2017</span>
+    </div>
+  </div>
+</nav>
+<!---------页面内容---------->
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading text-right">
+      <span class="pull-left">学员基本信息管理</span>
+      <button data-toggle="modal" data-target="#editModal" class="btn btn-default btn-sm btn-add">添加学员信息</button>
+    </div>
+    <div class="panel-body">
+      <table class="table table-hover table-bordered">
+        <thead>
+        <tr>
+          <td width="5%">序号</td>
+          <td width="10%">姓名</td>
+          <td width="10%">性别</td>
+          <td width="15%">所属学院</td>
+          <td>个人简介</td>
+          <td width="20%">录入时间</td>
+          <td width="10%">操作</td>
+        </tr>
+        </thead>
+        <tbody>
+        <!--todo-->
+        </tbody>
+      </table>
+
+      <!--分页页签渲染-->
+      <div class="text-right">
+        <ul class="pagination">
+
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<!---------创建模态框--------->
+<div class="modal fade" id="editModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+        <h4 class="modal-title">添加学员信息</h4>
+      </div>
+      <div class="modal-body">
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary">添加</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!---------删除模态框--------->
+<div class="modal fade" id="deleteModal">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+        <h4 class="modal-title">删除学员信息</h4>
+      </div>
+      <div class="modal-body">
+        您是否确定要删除 <span class="text-danger">xxx</span> 的信息吗？
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary">确定</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!---------总遮挡层---------->
+<div class="loading"></div>
+
+<!---------主体表格 渲染-------->
+<script type="text/template" id="template">
+  <% for(var i=0;i<list.length;i++){ %>
+    <tr class="text-center">
+      <td><%=i+1+(pageNum-1)*pageSize %></td>
+      <td><%=list[i].name %></td>
+      <td><%=list[i].sex %></td>
+      <td><%=list[i].academy %></td>
+      <td><%=list[i].introduce %></td>
+      <td><%=list[i].createTime %></td>
+      <td>
+        <a href="javascript:;" class="btn-update" data-id="<%=list[i].id %>" data-toggle="modal" data-target="#editModal">修改</a>
+        <a href="javascript:;" class="btn-delete" data-name="<%=list[i].name %>" data-id="<%=list[i].id %>" data-toggle="modal" data-target="#deleteModal">删除</a>
+      </td>
+    </tr>
+  <% } %>
+</script>
+<!---------创建模态框 渲染------->
+<script type="text/html" id="edit">
+  <form autocomplete="off">
+    <div class="form-group">
+      <% if(id){ %>
+      <input type="hidden" name="id" value="<%=id %>">  <!--传入valuea才能操作-->
+      <% } %>
+      <input type="text" name="name" class="form-control" placeholder="请输入姓名" value="<%=name %>">
+    </div>
+    <div class="form-group">
+      <input type="text" name="sex" class="form-control" placeholder="请输入性别" value="<%=sex %>">
+    </div>
+    <div class="form-group">
+      <input type="text" name="academy" class="form-control" placeholder="请输入所属学院" value="<%=academy %>">
+    </div>
+    <div class="form-group">
+      <textarea class="form-control" name="introduce" placeholder="请输入简介"><%=introduce %></textarea>
+    </div>
+  </form>
+</script>
+
+<script src="assets/jquery/jquery.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/artTemplate/template-native.js"></script>
+<script src="assets/bootstrap-paginator/bootstrap-paginator.min.js"></script>
+
+<script>
+  $(function () {
+    var listSave = null;
+    var pageSave = null;
+
+    //主体渲染函数
+    var render = function () {
+      $.ajax({
+        type: "get",
+        url: "api/findUsers.php",
+        data: {
+          pageNum: pageSave || 1,
+          pageSize: 10
+        },
+        dataType: "json",
+        beforeSend: function () {
+          $(".loading").show();
+        },
+        success: function (data) {
+          //console.log(data);
+          $(".loading").hide();
+          var html = template("template", data);
+          $("tbody").html(html);
+          listSave=data.list;
+
+          /*分页渲染*/
+          $('.pagination').bootstrapPaginator({
+            /*指定当前版本bootstrap*/
+            bootstrapMajorVersion:3,
+            /*按钮大小*/
+            size:'small',
+            /*当前页码*/
+            currentPage:data.pageNum,
+            /*最大显示几个按钮*/
+            numberOfPages:3,
+            /*共多少页*/
+            totalPages:Math.ceil(data.total/data.pageSize),
+            /*点击分页按钮事件*/
+            onPageClicked:function (event, originalEvent, type,page) {
+              /*按钮的类型   第一页  上一页 页码按钮 下一页 最后一页*/
+              /*点击按钮的当前页码*/
+              pageSave = page;
+              render();
+            }
+          });
+        }
+      });
+    };
+    render();
+
+    //创建模态框
+    var editModal=$("#editModal");
+    $(".btn-add").on("click",function () {    //添加
+      editModal.find(".modal-title").html("添加学员信息");
+      editModal.find(".modal-body").html(template("edit",{}));
+      editModal.find(".btn-primary").html("添加").attr("data-type","0");
+    });
+    
+    var getInformById=function (id) {
+      var res=null;   //不然拿不到数据
+      $.each(listSave,function (i,item) {
+        if(id==item.id){
+          res=item;
+          return false;
+        }
+      });
+      return res;
+    };
+    
+    $("body").on("click",".btn-update",function () {    //修改
+      var  id=$(this).attr("data-id");
+      //console.log(getInformById(id));
+      editModal.find(".modal-title").html("修改学员信息");
+      editModal.find(".modal-body").html(template("edit",getInformById(id)));
+      editModal.find(".btn-primary").html("修改").attr("data-type","1");
+    });
+
+    $(".btn-primary").on("click",function () {
+      var btn=$(this);
+      var list=editModal.find("form").serialize();
+      var num=btn.attr("data-type");
+      console.log(list);
+      $.ajax({
+        type:"post",
+        url: num==0?"api/saveUser.php":"api/updateUser.php",
+        data: list,
+        dataType: "json",
+        beforeSend: function () {
+          btn.addClass("btn-loading");
+        },
+        success:function (data) {
+          if(data.status=="ok"){
+            btn.removeClass("btn-loading");
+            editModal.modal("hide");
+            if(num==0){
+              pageSave=1;
+              render();
+            }else{
+              render();
+            }
+          }
+        }
+      });
+    });
+
+    //删除
+    var deleteModal=$("#deleteModal");
+    $("body").on("click",".btn-delete",function () {
+      var name=$(this).attr("data-name");
+      var id=$(this).attr("data-id");
+      var btn=$(this);
+      deleteModal.find(".text-danger").html(name);
+
+      $(".btn-primary").on("click",function () {
+        $.ajax({
+          type: "post",
+          url: "api/removeUser.php",
+          data: {
+            id: id
+          },
+          dataType: "json",
+          beforeSend: function () {
+            btn.addClass("btn-loading");
+          },
+          success: function (data) {
+            btn.removeClass("btn-loading");
+            deleteModal.modal("hide");
+            render();
+          }
+        });
+      });
+    });
+
+  });
+</script>
+</body>
+</html>
